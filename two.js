@@ -1,6 +1,6 @@
 var https = require('https');
 
-function getAndPrintHTMLChunks () {
+function getAndPrintHTML () {
 
 
   var requestOptions = {
@@ -12,18 +12,22 @@ function getAndPrintHTMLChunks () {
 
     response.setEncoding('UTF8');
 
+    var buffer = ""
+
     response.on('data', function (data) {
-      console.log(data + '\n')
+
+        buffer += data
+
+
+
     });
 
     response.on('end', function() {
-      console.log('Response stream complete.');
+      console.log(buffer);
     });
   });
 
 
 }
 
-getAndPrintHTMLChunks()
-
-
+getAndPrintHTML()
